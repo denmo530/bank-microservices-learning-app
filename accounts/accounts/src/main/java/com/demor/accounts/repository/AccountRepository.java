@@ -1,6 +1,6 @@
-package com.demor.accounts.repositories;
+package com.demor.accounts.repository;
 
-import com.demor.accounts.entities.Account;
+import com.demor.accounts.entity.Account;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

@@ -1,7 +1,7 @@
 package com.demor.accounts.mapper;
 
-import com.demor.accounts.dtos.AccountDto;
-import com.demor.accounts.entities.Account;
+import com.demor.accounts.dto.AccountDto;
+import com.demor.accounts.entity.Account;
 
 
 public class AccountMapper {

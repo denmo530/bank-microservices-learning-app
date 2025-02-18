@@ -1,6 +1,6 @@
-package com.demor.accounts.repositories;
+package com.demor.accounts.repository;
 
-import com.demor.accounts.entities.Customer;
+import com.demor.accounts.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

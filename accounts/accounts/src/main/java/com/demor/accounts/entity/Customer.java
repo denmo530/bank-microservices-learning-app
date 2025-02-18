@@ -1,4 +1,4 @@
-package com.demor.accounts.entities;
+package com.demor.accounts.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,6 +1,6 @@
 package com.demor.accounts.exception;
 
-import com.demor.accounts.dtos.ErrorDto;
+import com.demor.accounts.dto.ErrorDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

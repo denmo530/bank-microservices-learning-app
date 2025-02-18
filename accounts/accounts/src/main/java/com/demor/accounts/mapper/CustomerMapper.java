@@ -1,8 +1,7 @@
 package com.demor.accounts.mapper;
 
-import com.demor.accounts.dtos.CustomerDto;
-import com.demor.accounts.entities.Customer;
-import org.springframework.web.bind.annotation.Mapping;
+import com.demor.accounts.dto.CustomerDto;
+import com.demor.accounts.entity.Customer;
 
 public class CustomerMapper {
 

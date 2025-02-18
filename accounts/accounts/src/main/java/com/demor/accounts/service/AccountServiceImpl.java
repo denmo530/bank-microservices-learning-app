@@ -1,15 +1,15 @@
-package com.demor.accounts.services;
+package com.demor.accounts.service;
 
-import com.demor.accounts.dtos.AccountDto;
-import com.demor.accounts.dtos.CustomerDto;
-import com.demor.accounts.entities.Account;
-import com.demor.accounts.entities.Customer;
+import com.demor.accounts.dto.AccountDto;
+import com.demor.accounts.dto.CustomerDto;
+import com.demor.accounts.entity.Account;
+import com.demor.accounts.entity.Customer;
 import com.demor.accounts.exception.CustomerAlreadyExistsException;
 import com.demor.accounts.exception.ResourceNotFoundException;
 import com.demor.accounts.mapper.AccountMapper;
 import com.demor.accounts.mapper.CustomerMapper;
-import com.demor.accounts.repositories.AccountRepository;
-import com.demor.accounts.repositories.CustomerRepository;
+import com.demor.accounts.repository.AccountRepository;
+import com.demor.accounts.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.demor.accounts.dtos;
+package com.demor.accounts.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

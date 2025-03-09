@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.demor</groupId>
 	<artifactId>loans</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>loans</name>
 	<description>Loans microservice for playground bank microservices API</description>

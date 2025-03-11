@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/loans-0.0.1-SNAPSHOT.jar loans-0.0.1-SNAPSHOT.jar
 
 # Expose the application port
-EXPOSE 8080
+EXPOSE 8090
 
 # Execute the application
 ENTRYPOINT ["java", "-jar", "loans-0.0.1-SNAPSHOT.jar"]

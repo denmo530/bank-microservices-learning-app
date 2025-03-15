@@ -1,11 +1,15 @@
 package com.demor.accounts.controller;
 
+import com.demor.accounts.dto.AccountContactInfoDto;
 import com.demor.accounts.dto.CustomerDto;
 import com.demor.accounts.dto.ResponseDto;
 import com.demor.accounts.service.AccountService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +19,22 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
-@AllArgsConstructor
 public class AccountController {
 
-    private AccountService accountService;
+    private final AccountService accountService;
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private Environment environment;
+
+    @Autowired
+    private AccountContactInfoDto accountContactInfoDto;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto request) {
@@ -64,6 +80,21 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(
                 HttpStatus.INTERNAL_SERVER_ERROR, "An error occurred while deleting account."
         ));
+    }
+
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo() {
+        return ResponseEntity.ok(buildVersion);
+    }
+
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity.ok(environment.getProperty("JAVA_HOME"));
+    }
+
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountContactInfoDto> getContactInfo() {
+        return ResponseEntity.ok(accountContactInfoDto);
     }
 
 }

@@ -1,0 +1,11 @@
+build:
+  version: "1.0.0"
+
+accounts:
+  message: "Welcome to FAKEBANK accounts related local APIs"
+  contactDetails:
+    name: "John Doe - Key Account Manager"
+    email: "john@doe.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (523) 523-1234

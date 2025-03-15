@@ -1,0 +1,39 @@
+
+spring:
+  application:
+    name: accounts-api
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  config:
+    import:
+      - "application_staging.yml"
+      - "application_prod.yml"
+  profiles:
+    active:
+    default: "default"
+
+server:
+  port: 8080
+
+build:
+  version: "3.0.0"
+
+accounts:
+  message: "Welcome to FAKEBANK accounts related local APIs"
+  contactDetails:
+    name: "John Doe - Local Lead"
+    email: "john_local@doe.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (523) 523-1234

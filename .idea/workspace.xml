@@ -123,7 +123,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AccountsApplication">
+  <component name="RunManager" selected="Spring Boot.ConfigServerApplication">
     <configuration name="init_schema.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/accounts/accounts/src/main/resources/init_schema.sql" />
       <script-mode>FILE</script-mode>

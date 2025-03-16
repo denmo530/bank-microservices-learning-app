@@ -15,3 +15,6 @@ spring:
           timeout: 5
           clone-on-start: true
           force-pull: true
+
+encrypt:
+  key: "THIS1IS2A3FAKE4KEY5FOR6THIS7LEARNING8PROJECT9"

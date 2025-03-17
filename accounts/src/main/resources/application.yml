@@ -18,8 +18,18 @@ spring:
     hibernate:
       ddl-auto: update
   profiles:
-    active: staging
+    active: prod
     default: default
   config:
     import: "optional:configserver:http://localhost:8071/"
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: "guest"
+    password: "guest"
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

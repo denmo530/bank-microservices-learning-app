@@ -1,5 +1,7 @@
 server:
   port: 8071
+  jetty:
+    max-http-response-header-size: 64KB
 
 spring:
   application:
@@ -15,6 +17,8 @@ spring:
           timeout: 5
           clone-on-start: true
           force-pull: true
+        monitor:
+          enabled: true
   rabbitmq:
     host: localhost
     port: 5672

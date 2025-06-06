@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26b4dd50-6f30-4052-b4b2-443e4d47748d" name="Changes" comment="">
+    <list default="true" id="26b4dd50-6f30-4052-b4b2-443e4d47748d" name="Changes" comment="add bus-refresh and monitor endpoints to automatically update configs of microservices w/ webhook">
+      <change afterPath="$PROJECT_DIR$/docker-compose/default/common-config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/demor/accounts/AccountsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/demor/accounts/AccountsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +31,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "denmo530"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/denmo530/bank-microservices-learning-app.git",
+    "accountId": "87440bbd-9f08-4d7e-8238-8c041c5da153"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/loans/src/main/java/com/demor/loans/dto/LoansDto.java" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -70,7 +83,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/denkan/learning-projects/bank-microservices-learning-app",
+    "last_opened_file_path": "/Users/denkan/learning-projects/bank-microservices-learning-app/docker-compose/default",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,11 +102,11 @@
       <recent name="com.demor.accounts.exception" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker-compose/default" />
       <recent name="C:\Users\denni\projects\bank-microservices-learning-app\config-server\src\main\resources\config" />
       <recent name="C:\Users\denni\projects\bank-microservices-learning-app\cards\src\main\java\com\demor\cards" />
       <recent name="C:\Users\denni\projects\bank-microservices-learning-app\loans\src\main\java\com\demor\loans" />
       <recent name="C:\Users\denni\projects\bank-microservices-learning-app\loans\src\main\java\com\demor\loans\exception" />
-      <recent name="C:\Users\denni\projects\bank-microservices-learning-app\loans\src\main\java\com\demor\loans\dto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\denni\projects\bank-microservices-learning-app\accounts" />
@@ -122,7 +135,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ConfigServerApplication">
+  <component name="RunManager" selected="Spring Boot.AccountsApplication">
     <configuration name="init_schema.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/accounts/accounts/src/main/resources/init_schema.sql" />
       <script-mode>FILE</script-mode>
@@ -215,6 +228,9 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="26b4dd50-6f30-4052-b4b2-443e4d47748d" name="Changes" comment="" />
@@ -232,11 +248,26 @@
       <workItem from="1741896847416" duration="19560000" />
       <workItem from="1745008828443" duration="123000" />
       <workItem from="1745008964979" duration="1699000" />
-      <workItem from="1745011078000" duration="4793000" />
+      <workItem from="1745011078000" duration="24162000" />
+      <workItem from="1745526174193" duration="66000" />
+      <workItem from="1749240007121" duration="6486000" />
     </task>
+    <task id="LOCAL-00001" summary="add bus-refresh and monitor endpoints to automatically update configs of microservices w/ webhook">
+      <option name="closed" value="true" />
+      <created>1745062941831</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1745062941831</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add bus-refresh and monitor endpoints to automatically update configs of microservices w/ webhook" />
+    <option name="LAST_COMMIT_MESSAGE" value="add bus-refresh and monitor endpoints to automatically update configs of microservices w/ webhook" />
   </component>
 </project>

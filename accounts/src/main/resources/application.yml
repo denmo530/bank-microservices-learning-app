@@ -17,9 +17,6 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
-  profiles:
-    active: prod
-    default: default
   config:
     import: "optional:configserver:http://localhost:8071/"
   rabbitmq:

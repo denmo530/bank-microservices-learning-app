@@ -5,10 +5,10 @@ FROM amazoncorretto:21
 WORKDIR /app
 
 # Copy the jar into the docker container
-COPY target/accounts-0.0.1-SNAPSHOT.jar accounts-0.0.1-SNAPSHOT.jar
+COPY target/accounts-0.0.7-SNAPSHOT.jar accounts-0.0.7-SNAPSHOT.jar
 
 # Expose the application port
 EXPOSE 8080
 
 # Execute the application
-ENTRYPOINT ["java", "-jar", "accounts-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "accounts-0.0.7-SNAPSHOT.jar"]

@@ -15,8 +15,6 @@ public class Cards extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String customerId;
-
     private String mobileNumber;
 
     private String cardNumber;

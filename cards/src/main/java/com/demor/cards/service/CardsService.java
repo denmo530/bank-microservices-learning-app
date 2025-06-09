@@ -19,7 +19,7 @@ public class CardsService {
     private CardsRepository cardsRepository;
 
     public void createCard(String mobileNumber) {
-        Optional<Cards> optionalCards= cardsRepository.findByMobileNumber(mobileNumber);
+        Optional<Cards> optionalCards = cardsRepository.findByMobileNumber(mobileNumber);
         if(optionalCards.isPresent()){
             throw new CardsAlreadyExistsException("Card already registered with given mobileNumber "+mobileNumber);
         }

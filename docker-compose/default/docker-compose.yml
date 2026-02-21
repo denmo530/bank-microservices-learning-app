@@ -1,19 +1,4 @@
 services:
-#  rabbitMq:
-#    image: rabbitmq:4-management
-#    hostname: rabbitmq
-#    ports:
-#      - "5672:5672"
-#      - "15672:15672"
-#    healthcheck:
-#      test: rabbitmq-diagnostics check_port_connectivity
-#      interval: 10s
-#      timeout: 5s
-#      retries: 3
-#      start_period: 5s
-#    extends:
-#      file: common-config.yaml
-#      service: network-deploy-service
   accountsdb:
     container_name: accountsdb
     ports:
@@ -59,11 +44,37 @@ services:
       file: common-config.yaml
       service: microservice-base-config
 
+  eurekaserver:
+    image: "denmo530/eurekaserver:0.0.9"
+    container_name: eurekaserver-ms
+    ports:
+      - "8070:8070"
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-config-server-config
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
+
   accounts:
     image: "denmo530/accounts:0.0.7"
     container_name: accounts-api
     ports:
       - "8080:8080"
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       config-server:
         condition: service_healthy
@@ -74,13 +85,19 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://accountsdb:3306/accountsdb
     extends:
       file: common-config.yaml
-      service: microservice-config-server-config
+      service: microservice-eureka-config
 
   cards:
     image: "denmo530/cards:0.0.7"
     container_name: cards-api
     ports:
       - "9000:9000"
+    healthcheck:
+      test: "curl --fail --silent localhost:9090/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       config-server:
         condition: service_healthy
@@ -91,13 +108,19 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://cardsdb:3306/cardsdb
     extends:
       file: common-config.yaml
-      service: microservice-config-server-config
+      service: microservice-eureka-config
 
   loans:
     image: "denmo530/loans:0.0.7"
     container_name: loans-api
     ports:
       - "8090:8090"
+    healthcheck:
+      test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       config-server:
         condition: service_healthy
@@ -108,7 +131,27 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://loansdb:3306/loansdb
     extends:
       file: common-config.yaml
-      service: microservice-config-server-config
+      service: microservice-eureka-config
+
+  gatewayserver:
+    image: "denmo530/gateway:0.0.9" # Not created yet
+    container_name: gatewayserver-ms
+    ports:
+      - "8072:8072"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      accounts:
+        condition: service_healthy
+      loans:
+        condition: service_healthy
+      cards:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "gatewayserver"
+    extends:
+      file: common-config.yaml
+      service: microservice-eureka-config
 
 networks:
   bank-microservice:

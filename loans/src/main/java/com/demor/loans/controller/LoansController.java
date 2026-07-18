@@ -97,4 +97,9 @@ public class LoansController {
         return ResponseEntity.ok(environment.getProperty("JAVA_HOME"));
     }
 
+    @GetMapping("/contact-info")
+    public ResponseEntity<String> getContactInfo() {
+        logger.debug("Invoked Loans contact-info API");
+        return ResponseEntity.ok("Not implemented.");
+    }
 }

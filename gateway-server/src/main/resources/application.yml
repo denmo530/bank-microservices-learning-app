@@ -10,6 +10,9 @@ spring:
     gateway:
       server:
         webflux:
+          httpclient:
+            connect-timeout: 1000
+            response-timeout: 2s
           discovery:
             locator:
               enabled: false
@@ -39,3 +42,14 @@ logging:
     com:
       demor:
         gateway_server: DEBUG
+
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state:
+          nanos: 10000

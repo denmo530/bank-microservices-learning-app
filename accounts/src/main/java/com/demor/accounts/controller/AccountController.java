@@ -4,6 +4,7 @@ import com.demor.accounts.dto.AccountContactInfoDto;
 import com.demor.accounts.dto.CustomerDto;
 import com.demor.accounts.dto.ResponseDto;
 import com.demor.accounts.service.AccountService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Null;
@@ -102,9 +103,14 @@ public class AccountController {
         return ResponseEntity.ok("0.0");
     }
 
+    @RateLimiter(name = "getJavaVersion", fallbackMethod = "getJavaVersionFallback")
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity.ok(environment.getProperty("JAVA_HOME"));
+    }
+
+    public ResponseEntity<String> getJavaVersionFallback(Throwable throwable) {
+        return ResponseEntity.ok("Fallback method");
     }
 
     @GetMapping("/contact-info")

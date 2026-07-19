@@ -31,7 +31,7 @@ services:
       service: microservice-base-config
     environment:
       SPRING_CONFIG_IMPORT: configserver:http://config-server:8071/
-      SPRING_PROFILE_ACTIVE: staging
+      SPRING_PROFILES_ACTIVE: staging
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
 

@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26b4dd50-6f30-4052-b4b2-443e4d47748d" name="Changes" comment="add bus-refresh and monitor endpoints to automatically update configs of microservices w/ webhook">
+      <change afterPath="$PROJECT_DIR$/docker-compose/observability/grafana/datasource.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/observability/prometheus/prometheus.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cards/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cards/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/.bloomcycle.bin/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/.bloomcycle.bin/xl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/.usage-cache.bin.bkp/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/.usage-cache.bin.bkp/xl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/.usage-cache.bin/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/.usage-cache.bin/xl.meta" afterDir="false" />
@@ -15,14 +23,17 @@
       <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/loki-data/.usage-cache.bin/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/loki-data/.usage-cache.bin/xl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/loki-ruler/.usage-cache.bin.bkp/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/loki-ruler/.usage-cache.bin.bkp/xl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/loki-ruler/.usage-cache.bin/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/buckets/loki-ruler/.usage-cache.bin/xl.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/6d21f1ae-71df-402c-8074-363ba6fcdee0/xl.meta.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/8667823e-4479-4bba-956d-3662d0cb395f/xl.meta.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/89f785f5-9bef-45f9-a8b4-aec26b01993b/xl.meta.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/a3ca21a5-3970-47c6-948f-02925423f736/xl.meta.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/a8a398cc-76f7-4630-b5ab-1b51e2571a7e/xl.meta.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/bd6556a1-827a-4d8d-9c31-e71fb4746894/xl.meta.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/c25a03cc-a508-41ac-90e6-6bd1a7e69904/xl.meta.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/d0fb3b8d-2360-4a6c-b980-7cf7a101752d/xl.meta.bkp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/.trash/bc8b0d62-1cbe-4766-a754-2277cac18ff8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/.minio.sys/tmp/5744f748-eedf-4dce-bba8-7b0f7b4e2265" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/.data/minio/loki-data/index/index_20653/tenant1/1784491622533734255-compactor-1784488403895-1784489262059-8737efdb.tsdb.gz/xl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/staging/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/staging/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loans/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/loans/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loans/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/loans/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +97,7 @@
     "Docker.default.config-server: Compose Deployment.executor": "Run",
     "Docker.default.loansdb: Compose Deployment.executor": "Run",
     "Docker.prod.backend: Compose Deployment.executor": "Run",
+    "Docker.prod.prometheus: Compose Deployment.executor": "Run",
     "Maven.accounts [clean:clean].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -185,7 +197,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.prod.backend: Compose Deployment">
+  <component name="RunManager" selected="Docker.prod.prometheus: Compose Deployment">
     <configuration default="true" type="tests" factoryName="Autodetect">
       <module name="main" />
       <option name="ENV_FILES" value="" />
@@ -293,19 +305,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="default.config-server: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="config-server" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose/default/docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="default.loansdb: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -332,13 +331,26 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="prod.prometheus: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="prometheus" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose/prod/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.prod.backend: Compose Deployment" />
+        <item itemvalue="Docker.prod.prometheus: Compose Deployment" />
         <item itemvalue="Spring Boot.AccountsApplication" />
+        <item itemvalue="Docker.prod.backend: Compose Deployment" />
         <item itemvalue="Docker.default.cardsdb: Compose Deployment" />
         <item itemvalue="Docker.default.loansdb: Compose Deployment" />
-        <item itemvalue="Docker.default.config-server: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>

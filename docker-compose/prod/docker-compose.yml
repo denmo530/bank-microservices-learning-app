@@ -31,6 +31,7 @@ services:
 
   config-server:
     image: "denmo530/config-server:latest"
+    build: ../../config-server
     container_name: config-server
     ports:
       - "8071:8071"
@@ -43,9 +44,12 @@ services:
     extends:
       file: common-config.yaml
       service: microservice-base-config
+    environment:
+      OTEL_SERVICE_NAME: "config-server"
 
   eurekaserver:
     image: "denmo530/eureka-server:latest"
+    build: ../../eureka-server
     container_name: eurekaserver-ms
     ports:
       - "8070:8070"
@@ -63,9 +67,11 @@ services:
       service: microservice-config-server-config
     environment:
       SPRING_APPLICATION_NAME: "eurekaserver"
+      OTEL_SERVICE_NAME: "eurekaserver"
 
   accounts:
     image: "denmo530/accounts:latest"
+    build: ../../accounts
     container_name: accounts-api
     ports:
       - "8080:8080"
@@ -83,12 +89,14 @@ services:
     environment:
       SPRING_APPLICATION_NAME: accounts
       SPRING_DATASOURCE_URL: jdbc:mysql://accountsdb:3306/accountsdb
+      OTEL_SERVICE_NAME: "accounts"
     extends:
       file: common-config.yaml
       service: microservice-eureka-config
 
   cards:
     image: "denmo530/cards:latest"
+    build: ../../cards
     container_name: cards-api
     ports:
       - "9000:9000"
@@ -106,12 +114,14 @@ services:
     environment:
       SPRING_APPLICATION_NAME: cards
       SPRING_DATASOURCE_URL: jdbc:mysql://cardsdb:3306/cardsdb
+      OTEL_SERVICE_NAME: "cards"
     extends:
       file: common-config.yaml
       service: microservice-eureka-config
 
   loans:
     image: "denmo530/loans:latest"
+    build: ../../loans
     container_name: loans-api
     ports:
       - "8090:8090"
@@ -129,12 +139,14 @@ services:
     environment:
       SPRING_APPLICATION_NAME: loans
       SPRING_DATASOURCE_URL: jdbc:mysql://loansdb:3306/loansdb
+      OTEL_SERVICE_NAME: "loans"
     extends:
       file: common-config.yaml
       service: microservice-eureka-config
 
   gatewayserver:
-    image: "denmo530/gateway-server:latest" # Not created yet
+    image: "denmo530/gateway-server:latest"
+    build: ../../gateway-server
     container_name: gatewayserver-ms
     ports:
       - "8072:8072"
@@ -149,6 +161,7 @@ services:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "gatewayserver"
+      OTEL_SERVICE_NAME: "gatewayserver"
     extends:
       file: common-config.yaml
       service: microservice-eureka-config
@@ -243,6 +256,34 @@ services:
       - "9090:9090"
     volumes:
       - ../observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../observability/prometheus/alerting_rules.yml:/etc/prometheus/alerting_rules.yml
+    extends:
+      file: common-config.yaml
+      service: network-deploy-service
+
+  tempo:
+    image: grafana/tempo:latest
+    container_name: tempo
+    command: "-config.file=/etc/tempo/tempo.yml"
+    ports:
+      - "3200:3200"   # HTTP
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+    volumes:
+      - ../observability/tempo/tempo.yml:/etc/tempo/tempo.yml
+    extends:
+      file: common-config.yaml
+      service: network-deploy-service
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ../observability/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
     extends:
       file: common-config.yaml
       service: network-deploy-service

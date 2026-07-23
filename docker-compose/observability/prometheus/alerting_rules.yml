@@ -1,0 +1,88 @@
+groups:
+  - name: service-availability
+    interval: 15s
+    rules:
+      - alert: ServiceDown
+        expr: up == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "Prometheus cannot scrape {{ $labels.job }}. The service may be crashed or unreachable."
+
+  - name: http-errors
+    interval: 15s
+    rules:
+      - alert: HighHttpErrorRate
+        expr: |
+          sum(rate(http_server_requests_seconds_count{status=~"5.."}[2m])) by (job)
+          /
+          sum(rate(http_server_requests_seconds_count[2m])) by (job)
+          > 0.05
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High 5xx error rate on {{ $labels.job }}"
+          description: "More than 5% of requests to {{ $labels.job }} are returning 5xx errors."
+
+      - alert: HighHttpLatency
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(http_server_requests_seconds_bucket[5m])) by (job, le)
+          ) > 1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High P95 latency on {{ $labels.job }}"
+          description: "95th percentile latency on {{ $labels.job }} is above 1 second."
+
+  - name: resilience4j
+    interval: 15s
+    rules:
+      - alert: CircuitBreakerOpen
+        expr: resilience4j_circuitbreaker_state{state="open"} == 1
+        for: 0s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Circuit breaker OPEN on {{ $labels.application }}"
+          description: "Circuit breaker '{{ $labels.name }}' on {{ $labels.application }} is in OPEN state, blocking calls to downstream service."
+
+      - alert: HighRetryRate
+        expr: |
+          sum(rate(resilience4j_retry_calls_total{kind="failed_with_retry"}[2m])) by (application, name) > 0.1
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High retry rate on {{ $labels.application }}"
+          description: "Retry '{{ $labels.name }}' on {{ $labels.application }} is frequently retrying failed calls."
+
+      - alert: RateLimiterRejecting
+        expr: |
+          sum(rate(resilience4j_ratelimiter_calls_total{kind="failed"}[1m])) by (application, name) > 0
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Rate limiter rejecting requests on {{ $labels.application }}"
+          description: "Rate limiter '{{ $labels.name }}' on {{ $labels.application }} is actively rejecting requests."
+
+  - name: jvm
+    interval: 30s
+    rules:
+      - alert: HighJvmHeapUsage
+        expr: |
+          jvm_memory_used_bytes{area="heap"}
+          /
+          jvm_memory_max_bytes{area="heap"}
+          > 0.85
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High JVM heap usage on {{ $labels.application }}"
+          description: "JVM heap usage on {{ $labels.application }} is above 85% for more than 2 minutes. GC pressure may be high."

@@ -67,3 +67,5 @@ logging:
     com:
       demor:
         cards: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},trace_id=%X{trace_id:-},span_id=%X{span_id:-}]"
